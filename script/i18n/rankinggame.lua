@@ -1,0 +1,6 @@
+local _t = require("i18n").context("combat")
+module("RANKING_GAME_TABLE")
+RANKING_GAME_0 = _t("Après 5 minuti")
+RANKING_GAME_1 = _t("Après 10 minuti")
+RANKING_GAME_2 = _t("Santuario di Gilda")
+RANKING_GAME_3 = _t("Début Fase di qualifica")

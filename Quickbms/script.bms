@@ -1,0 +1,32 @@
+#Saint Seiya Online pck Extractor
+#by chrrox
+#quickbms from aluigi http://aluigi.altervista.org/quickbms.htm
+get magic1 long #0x4dCa23EF
+get arcsize long
+get magic2 long #0x56A089B7
+goto -8
+get files long
+goto -272
+filexor "0xe1 0xf9 0xa4 0x62"
+get tbloff long
+filexor ""
+for i = 0 < files
+goto tbloff
+filexor "0xe1 0xf9 0xa4 0x62"
+get tzsize long
+filexor "0xd5 0xC3 0x20 0x35"
+get tzsize2 long
+filexor ""
+savepos tbloff
+clog MEMORY_FILE tbloff tzsize 276
+getdstring name 0x104 MEMORY_FILE
+get offset long MEMORY_FILE
+get size long MEMORY_FILE
+get zsize long MEMORY_FILE
+if size == zsize
+log name offset size
+else
+clog name offset zsize size
+endif
+math tbloff + tzsize
+next i
